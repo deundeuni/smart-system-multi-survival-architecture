@@ -1,5 +1,7 @@
+
 다국어 공개 안내: 본 문서는 동일 내용의 한/영 이중 공개 문서입니다. v3.7 2026-09-27 (영문: README.md)
-Original Authority Notice: 본 기술 명세의 법적·공학적 판단 최상위 기준은 한글 원본(README.ko.md / ARCHITECTURE_STRATEGY.md)에 귀속되며, 영문본은 보조 참조용으로만 기능한다. (PHILOSOPHY.ko.md is authoritative original)
+
+Original Authority Notice: 본 기술 명세의 법적·공학적 판단 최상위 기준은 한글 원본(README.ko.md / ARCHITECTURE_STRATEGY.ko.md)에 귀속되며, 영문본은 보조 참조용으로만 기능한다. (PHILOSOPHY.ko.md is authoritative original)
 스마트시스템 다중 생존 아키텍처 백서 v3.7 (Full-Stack Resilient Smart System Architecture - 첨단 패키징, 사이버-물리 핸드오프, 온디바이스 엣지 및 동적 모듈러 탈부착 통합판)
 본 문서는 특정 기업이나 특정 브랜드를 배제하고, 구현 수단이나 제어 주체와 무관하게 시스템 생존성과 경제성을 동시에 확보하기 위한 물리적·논리적 범용 조립 방식(Modular & Disaggregated Architecture)의 구조적 차이와 표준화 논리를 다룹니다.
 본 백서 원안의 텍스트 표현물에는 CC BY 4.0, 파생 코드 및 실행 구현물에는 Apache License 2.0 (Apache-2.0)을 이원화 적용하며, 방어적 공개(Defensive Publication)를 목적으로 합니다. (기존 커스텀 DPL v1.0 고지는 2026년 9월 27일 자로 본 표준 라이선스 체계로 전면 대체됨)
@@ -17,7 +19,10 @@ Original Authority Notice: 본 기술 명세의 법적·공학적 판단 최상�
 0.6 상위 스마트시스템 개념 정의 및 포괄적 적용 범위 (Smart System Scope)
 본 아키텍처에 사용된 '칩렛(Chiplet)' 및 '모듈(Module)' 표기는 단일 반도체 실리콘 다이(Die) 분리체에 국한되지 않으며, 기능적으로 분리되어 상호 통신하고 독립 격리 가능한 모든 물리적·논리적 제어 모듈, 첨단 패키징 블록, 소프트웨어 에이전트, 사이버-물리 시스템(CPS) 및 분산 스마트시스템 전체를 포괄하는 상위 개념으로 정의한다.
 스마트폰 AP, 공장 산업용 제어기, 클라우드 AI 가속기, 자율주행 모빌리티 ECU, EV 스왑 스테이션, 엣지 AI 서버, 재난 대피 인프라 등 하나 이상에 탑재되는 단일/다중 스마트시스템 전체에 적용된다.
-0.7 공개 목적 및 한계 고지 (Disclosure Purpose & Limitation Notice)
+0.7 최초 출발점 및 서사적 확장 계보 (Origin & Narrative Expansion)
+본 백서 체계는 초기부터 거대한 단일 통합 범용 허브로 기획된 것이 아니라, 반도체 및 첨단 패키징 레벨의 연산 생존 제어기 명세(chiplet-apu-multi-system-survival-architecture)라는 명확한 단일 과제에서 출발하였습니다.
+칩렛 및 온디바이스 연산 단위의 자가치유·오류격리 논리가 사이버-물리 시스템(CPS), L0 물리 기구(CWP 메커니즘), 엣지 AI, 피난 유도 인프라(LAST-LIGHT), 공간 HMI(POLYLINK-HUD) 등 시스템 전반으로 확장·분화함에 따라, 이들을 총괄 연계하는 최상위 마스터 저장소(smart-system-multi-survival-architecture)로 상위 서사가 정립되었습니다. chiplet-apu-multi-system-survival-architecture 백서는 본 최상위 마스터 백서의 직계 출발점이자 연산 제어 부문의 원조 뿌리 백서입니다.
+0.8 공개 목적 및 한계 고지 (Disclosure Purpose & Limitation Notice)
 본 문서는 공익적인 목적으로 아이디어 단계의 구상안을 방어적 선행기술(Prior Art)로 공개하는 자료이다. 본 문서 작성 및 정제 과정에서 활용된 텍스트 변환 도구는 수동적 유틸리티에 국한되며, 기재된 구조, 수치, 소재 적용 방향은 실제 구현 및 검증 과정에서 유연하게 변경될 수 있다.
 1. 두 가지 모듈 및 연산 블록 조립 방식 비교
  * 단일 통합형 (Single-Die / Monolithic Integration) — 하나의 단일 구역(Die/Monolith)에 모든 연산, 제어 및 물리 블록을 통합하여 구성하는 방식입니다. 초기 제조 및 구동 단가가 비교적 저렴하며 블록 간 내부 배선 및 인터페이스 구조가 단순하지만, 특정 영역에 결함이 발생할 경우 시스템 전면 마비 위험이 존재하며 영역별 전원 및 보안 격리에 한계가 존재합니다.
@@ -72,7 +77,7 @@ Original Authority Notice: 본 기술 명세의 법적·공학적 판단 최상�
  * 소마모아 생태계 저장소 및 학술 식별자 (Ecosystem Repositories & DOIs):
    * 최상위 범용 생존 아키텍처 마스터 허브 (smart-system-multi-survival-architecture) — GitHub: deundeuni / smart-system-multi-survival-architecture | (신규 Release 발행 시 Zenodo DOI 자동 발급 예정)
    * 최상위 거점 관문 및 메인 저장소 (soma-moa) — GitHub: deundeuni / soma-moa | CERN Zenodo DOI: 10.5281/zenodo.22435773 | 관문 도메인: somamoa.ai.kr
-   * 연산 생존 제어기 (chiplet-apu-multi-system-survival-architecture) — GitHub: deundeuni / chiplet-apu-multi-system-survival-architecture | CERN Zenodo DOI: 10.5281/zenodo.22374987
+   * 연산 생존 제어기 (chiplet-apu-multi-system-survival-architecture) — GitHub: deundeuni / chiplet-apu-multi-system-survival-architecture | CERN Zenodo DOI: 10.5281/zenodo.22374987 (본 최상위 마스터 백서의 최초 출발점이자 직계 뿌리 연산 백서)
    * 엣지·온디바이스 자율 연산 백서 (ON_DEVICE_EDGE_SURVIVAL_PAPER) — GitHub: deundeuni / ON_DEVICE_EDGE_SURVIVAL_PAPER | (Release 발행 시 Zenodo DOI 발급 예정)
    * 공간 HMI 게이트웨이 (POLYLINK-HUD) — GitHub: deundeuni / POLYLINK-HUD | CERN Zenodo DOI: 10.5281/zenodo.22726318
    * 재난 피난 유도 & 보조 인프라 (LAST-LIGHT) — GitHub: deundeuni / LAST-LIGHT | CERN Zenodo DOI: 10.5281/zenodo.22373189
@@ -94,7 +99,7 @@ Appendix A: Inventorship
 Appendix B: Version History
  * v3.5: ON_DEVICE 백서 핵심 5선 이식 통합 개정
  * v3.6: 4절 누락 청구 항목(무단 이송 차단 회로 및 트라이스테이트/독립 릴레이 물리·논리 격리) 명시적 복원, 12개 생태계 저장소 목록 정리 및 출처 정합 완비 (DOI 미발급 2개 항목 발급 대기 상태 반영)
- * v3.7 (2026-09-27): 라이선스 표기를 2026-09-27 자로 표준 라이선스(CC BY 4.0 & Apache-2.0 이원화 체계)로 재편하고 저장소 루트의 LICENSE 파일과 정밀 연동함. 기존 커스텀 DPL v1.0 표기를 공식 대체하며, 변경 이력 자체도 방어적 공개 기록의 일부로 지속 보존을 도모함.
+ * v3.7 (2026-09-27): 라이선스 표기를 2026-09-27 자로 표준 라이선스(CC BY 4.0 & Apache-2.0 이원화 체계)로 재편하고 저장소 루트의 LICENSE 파일과 정밀 연동함. 0.7절 최초 출발점 서사(chiplet-apu 원조 뿌리 명시) 및 8장 계보 표기를 추가 보강함. 기존 커스텀 DPL v1.0 표기를 공식 대체하며, 변경 이력 자체도 방어적 공개 기록의 일부로 지속 보존을 도모함.
 Appendix C: AI Assistance Disclosure
  * Original Architecture & Concepts: deundeuni (Human) - Sole Inventor, 전체 구상 및 의사결정 주체
  * Technical & Legal Drafting Support: Generic Generative AI Text Refinement & Structuring Tools (범용 생성형 AI 텍스트 정제 및 구조화 도구)
